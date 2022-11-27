@@ -47,8 +47,28 @@ X.pred=matrix(c(1,rep(0,ncol(X)-1)),nrow=len,ncol=ncol(X),byrow = TRUE) # X for 
 
 ### Step 4. Fit the model
 ```
+#output includes:
+# beta:   final estimation of beta
+# f:      an N by q matrix with column 1 to q the estimation of f1 to fq at each U
+# f.pred: a len by q matrix with column 1 to q the estimation of f1 to fq at the corresponding U.pred
+# record.h: recording the bandwidths at each iteration
 res=fit.aplm(Z,U,X,original.Weight,PoolID,U.ps,X.pred=X.pred,U.pred=U.pred,kernel_type=kernel_type,max.iter=max.iter,plot=TRUE,plot.pred=TRUE)
 ```
 The program will output the selected bandwidth in each iteration. If plot=TRUE and plot.pred=TRUE are specified, it will also output the fitted curves in each iteration and the predicted curves in the end of the program, as shown below:
+<img src="https://github.com/abc1m2x3c/APLMforPool/blob/6ffc88edc8b81ee515633080ba99fa5bb32b56f6/IterationOutputConsole.PNG" width="400" height="250">
+<img src="https://github.com/abc1m2x3c/APLMforPool/blob/6ffc88edc8b81ee515633080ba99fa5bb32b56f6/IterationPlot.PNG" width="600" height="300">
 
+### Step 5. Check the outputs
+We can check the outputs by visiting the 'res' variable in the previous line. We can access the estimation of beta and make more formal plots about nonlinear curves by the following codes:
 
+```
+res$beta
+plot(U.pred[,1],res$f.pred[1:len,1],col="black",ylab='',type='l',xlab='log(BMI)',cex.lab=1.5,cex.axis=1.1,lwd=2)
+title(ylab=expression(hat('f')[1]*'(log(BMI))'), line=2, cex.lab=1.5)
+plot(U.pred[,2],res$f.pred[1:len,2],col="black",ylab='',type='l',xlab='Age',cex.lab=1.5,cex.axis=1.1,lwd=2)
+title(ylab=expression(hat('f')[2]*'(age)'), line=2, cex.lab=1.5)
+```
+
+The output will be:
+<img src="https://github.com/abc1m2x3c/APLMforPool/blob/6ffc88edc8b81ee515633080ba99fa5bb32b56f6/IterationOutputConsole.PNG" width="400" height="250">
+<img src="https://github.com/abc1m2x3c/APLMforPool/blob/6ffc88edc8b81ee515633080ba99fa5bb32b56f6/IterationPlot.PNG" width="600" height="300">
