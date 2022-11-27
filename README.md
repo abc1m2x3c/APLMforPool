@@ -69,6 +69,7 @@ plot(U.pred[,2],res$f.pred[1:len,2],col="black",ylab='',type='l',xlab='Age',cex.
 title(ylab=expression(hat('f')[2]*'(age)'), line=2, cex.lab=1.5)
 ```
 
-The output will be:
-<img src="https://github.com/abc1m2x3c/APLMforPool/blob/6ffc88edc8b81ee515633080ba99fa5bb32b56f6/IterationOutputConsole.PNG" width="400" height="250">
+The output will be: 
+
 <img src="https://github.com/abc1m2x3c/APLMforPool/blob/cae9ac7ed10aa058509ad83eb8b1d5fae677ead2/finalplot.PNG" width="600" height="300">
+<img src="https://github.com/abc1m2x3c/APLMforPool/blob/8c3ba812b05686ff6796a90347b8a4b30e678892/betaestimation.PNG" width="200" height="200">
